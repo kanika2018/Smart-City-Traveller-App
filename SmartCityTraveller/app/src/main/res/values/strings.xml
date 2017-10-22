@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Smart City Traveller</string>
+    <string name="title_activity_plan__your__day">Plan_Your_Day</string>
+    <string name="title_activity_eating__places">Eating_Places</string>
+    <string name="hello">Hello World, ListViewMultipleSelectionActivity!</string>
+
+    <string name="result_activity">ResultActivity</string>
+    <string name="submit">Submit</string>
+    <string-array name="preference_array">
+        <item>Historical Places</item>
+        <item>Places to Shop</item>
+        <item>For Nature and Animal Lovers</item>
+        <item>Kids Friendly</item>
+        <item>Culture and Art Lovers</item>
+        <item>Amusement and Adventure activities </item>
+        <item>Scenic Points</item>
+        <item>Outdoors</item>
+    </string-array>
+    <string name="title_activity_questionnaire">Questionnaire</string>
 </resources>

@@ -18,7 +18,7 @@
         android:layout_margin="5dp">
 
         <Button
-            android:id="@+id/register"
+            android:id="@+id/top"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -26,10 +26,10 @@
             android:background="#26a69a"
             android:text="Top Picks"
             android:textSize="20sp"
-            android:textStyle="bold" />
+             />
 
         <Button
-            android:id="@+id/stats"
+            android:id="@+id/plan"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -37,7 +37,7 @@
             android:background="#80cbc4"
             android:text="PLAN YOUR     DAY"
             android:textSize="20sp"
-            android:textStyle="bold" />
+             />
 
     </LinearLayout>
     <LinearLayout
@@ -45,10 +45,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:layout_margin="5dp">
 
         <Button
-            android:id="@+id/whyrec"
+            android:id="@+id/bookmark"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -56,10 +56,10 @@
             android:background="#80cbc4"
             android:text="BOOKMARKS"
             android:textSize="20sp"
-            android:textStyle="bold" />
+             />
 
         <Button
-            android:id="@+id/contact"
+            android:id="@+id/eat"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -67,7 +67,7 @@
             android:background="#26a69a"
             android:text="EAT YOUR HEART OUT"
             android:textSize="20sp"
-            android:textStyle="bold" />
+             />
 
     </LinearLayout>
 </LinearLayout>
