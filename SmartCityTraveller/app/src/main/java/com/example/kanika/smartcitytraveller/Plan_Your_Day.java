@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -32,13 +33,65 @@ public class Plan_Your_Day extends Activity implements OnClickListener {
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setAdapter(adapter);
 
+
+
         button.setOnClickListener(this);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
+                                    long arg3) {
+                if (pos == 0) {
+                    Intent intent = new Intent(getApplicationContext(), Historical_Plaes.class);
+                    startActivity(intent);
+
+                }
+                else if (pos == 1) {
+                    Intent intent = new Intent(getApplicationContext(), Shopping_Places.class);
+                    startActivity(intent);
+
+                }
+                else if (pos==2)
+                {
+                    Intent intent = new Intent(getApplicationContext(), For_Nature_and_Animal_Lovers.class);
+                    startActivity(intent);
+                }
+                else if(pos==3)
+                {
+                    Intent intent = new Intent(getApplicationContext(), Kids.class);
+                    startActivity(intent);
+                }
+
+                else if(pos==4)
+                {
+                    Intent intent = new Intent(getApplicationContext(), Culture.class);
+                    startActivity(intent);
+                }
+
+                else if(pos==5)
+                {
+                    Intent intent = new Intent(getApplicationContext(), Adventure.class);
+                    startActivity(intent);
+                }
+                else if(pos==6)
+                {
+                    Intent intent = new Intent(getApplicationContext(), Outdoors.class);
+                    startActivity(intent);
+                }
+
+
+            }
+            });
+
+
+
     }
+
 
     private void findViewsById() {
         listView = (ListView) findViewById(R.id.list);
         button = (Button) findViewById(R.id.testbutton);
     }
+
 
     public void onClick(View v) {
         SparseBooleanArray checked = listView.getCheckedItemPositions();

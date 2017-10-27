@@ -13,8 +13,81 @@
         <item>Kids Friendly</item>
         <item>Culture and Art Lovers</item>
         <item>Amusement and Adventure activities </item>
-        <item>Scenic Points</item>
         <item>Outdoors</item>
     </string-array>
     <string name="title_activity_questionnaire">Questionnaire</string>
+
+    <string-array name="historial_array">
+        <item>Historic Sites</item>
+        <item>Monuments and Memorials</item>
+        <item>Historical museums</item>
+
+    </string-array>
+
+    <string-array name="shopping_array">
+        <item>Malls</item>
+        <item>Local Markets</item>
+
+    </string-array>
+
+    <string-array name="Religious_array">
+
+        <item>Temples(Jain/Hindu/Buddhist)</item>
+        <item>Church</item>
+        <item>Mosque</item>
+        <item>Synagogue</item>
+        <item>Hof</item>
+        <item>Others</item>
+
+    </string-array>
+
+    <string-array name="kids_array">
+
+        <item>Theme Parks</item>
+        <item>Zoos</item>
+        <item>Aquariums</item>
+        <item>Museums</item>
+        <item>Parks</item>
+        <item>Cinema</item>
+
+    </string-array>
+
+    <string-array name="nature_array">
+
+        <item>National Parks</item>
+        <item>Zoos</item>
+        <item>Aquariums</item>
+        <item>Bio-Diversity Parks</item>
+
+    </string-array>
+
+    <string-array name="art_array">
+
+        <item>Museums</item>
+        <item>Art Galleries</item>
+        <item>Fairs</item>
+        <item>Monuments</item>
+        <item>Cinema</item>
+
+    </string-array>
+
+    <string-array name="adventure_array">
+
+        <item>Adventure Parks</item>
+        <item>Gaming Cantres</item>
+        <item>Casinos</item>
+        <item>Trails and Hikes</item>
+    </string-array>
+
+    <string-array name="outdoor_array">
+
+        <item>Trails and Hikes</item>
+        <item>Camping Grounds</item>
+        <item>Stadiums</item>
+        <item>Historial Sites</item>
+        <item>Beaches</item>
+
+    </string-array>
+
+
 </resources>

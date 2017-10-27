@@ -26,7 +26,14 @@
             android:name=".Questionnaire"
             android:label="@string/title_activity_questionnaire"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Eating_Places"></activity>
+        <activity android:name=".Eating_Places" />
+        <activity android:name=".Historical_Plaes" />
+        <activity android:name=".Shopping_Places" />
+        <activity android:name=".For_Nature_and_Animal_Lovers" />
+        <activity android:name=".Kids" />
+        <activity android:name=".Culture" />
+        <activity android:name=".Adventure" />
+        <activity android:name=".Outdoors"></activity>
     </application>
 
 </manifest>
