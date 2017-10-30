@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class Plan_Your_Day extends Activity implements OnClickListener {
 
@@ -37,51 +38,6 @@ public class Plan_Your_Day extends Activity implements OnClickListener {
 
         button.setOnClickListener(this);
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
-//                                    long arg3) {
-//                if (pos == 0) {
-//                    Intent intent = new Intent(getApplicationContext(), Historical_Plaes.class);
-//                    startActivity(intent);
-//
-//                }
-//                else if (pos == 1) {
-//                    Intent intent = new Intent(getApplicationContext(), Shopping_Places.class);
-//                    startActivity(intent);
-//
-//                }
-//                else if (pos==2)
-//                {
-//                    Intent intent = new Intent(getApplicationContext(), For_Nature_and_Animal_Lovers.class);
-//                    startActivity(intent);
-//                }
-//                else if(pos==3)
-//                {
-//                    Intent intent = new Intent(getApplicationContext(), Kids.class);
-//                    startActivity(intent);
-//                }
-//
-//                else if(pos==4)
-//                {
-//                    Intent intent = new Intent(getApplicationContext(), Culture.class);
-//                    startActivity(intent);
-//                }
-//
-//                else if(pos==5)
-//                {
-//                    Intent intent = new Intent(getApplicationContext(), Adventure.class);
-//                    startActivity(intent);
-//                }
-//                else if(pos==6)
-//                {
-//                    Intent intent = new Intent(getApplicationContext(), Outdoors.class);
-//                    startActivity(intent);
-//                }
-//
-//
-//            }
-//            });
-
 
 
     }
@@ -106,21 +62,30 @@ public class Plan_Your_Day extends Activity implements OnClickListener {
 
         String[] outputStrArr = new String[selectedItems.size()];
 
-        for (int i = 0; i < selectedItems.size(); i++) {
-            outputStrArr[i] = selectedItems.get(i);
+        if(outputStrArr.length==0)
+        {
+            Toast.makeText(getApplicationContext(),"no item selected",Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            for (int i = 0; i < selectedItems.size(); i++) {
+                outputStrArr[i] = selectedItems.get(i);
+            }
+
+            Intent intent = new Intent(getApplicationContext(),
+                    Questionnaire.class);
+
+            // Create a bundle object
+            Bundle b = new Bundle();
+            b.putStringArray("selectedItems", outputStrArr);
+
+            // Add the bundle to the intent.
+            intent.putExtras(b);
+
+            // start the ResultActivity
+            startActivity(intent);
         }
 
-        Intent intent = new Intent(getApplicationContext(),
-                Questionnaire.class);
 
-        // Create a bundle object
-        Bundle b = new Bundle();
-        b.putStringArray("selectedItems", outputStrArr);
-
-        // Add the bundle to the intent.
-        intent.putExtras(b);
-
-        // start the ResultActivity
-        startActivity(intent);
     }
 }
