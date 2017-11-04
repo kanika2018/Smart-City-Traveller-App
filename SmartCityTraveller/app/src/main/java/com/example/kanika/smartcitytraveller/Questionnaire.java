@@ -32,17 +32,21 @@ public class Questionnaire extends Activity {
         lv = (ListView) findViewById(R.id.outputList);
         b1 = (Button) findViewById(R.id.button);
         tv = (TextView) findViewById(R.id.textView2);
-        ArrayAdapter<String> adapter = initialize();
-        addToList(adapter);
+        ArrayAdapter<String> adapter;
+        initialize();
+        //addToList();
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (i < resultArr.length) {
 
-                    ArrayAdapter<String> adapter = initialize();
-                    addToList(adapter);
+
+                    addToList();
+                    initialize();
+
                 } else {
+                    addToList();
                     goToNext();
                 }
 
@@ -52,7 +56,7 @@ public class Questionnaire extends Activity {
 
     }
 
-    public ArrayAdapter<String> initialize() {
+    public void initialize() {
 
         String[] historical = getResources().getStringArray(R.array.historial_array);
         String[] shopping = getResources().getStringArray(R.array.shopping_array);
@@ -81,7 +85,7 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, historical);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
-                    return adapter;
+                    break;
 
 
                 }
@@ -92,7 +96,7 @@ public class Questionnaire extends Activity {
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
 
-                    return adapter;
+                    break;
                 }
                 case "Religious Places": {
                     tv.setText("Which religious place would you like to visit?");
@@ -100,7 +104,7 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, religious);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
-                    return adapter;
+                    break;
 
                 }
                 case "For Nature and Animal Lovers": {
@@ -109,7 +113,7 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, nature);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
-                    return adapter;
+                    break;
 
                 }
                 case "Kids Friendly": {
@@ -118,7 +122,7 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, kids);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
-                    return adapter;
+                    break;
                 }
                 case "Culture and Art Lovers": {
                     tv.setText("Hey Art Lovers! Where would you like to go?");
@@ -127,7 +131,7 @@ public class Questionnaire extends Activity {
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
 
-                    return adapter;
+                    break;
                 }
                 case "Amusement and Adventure activities": {
                     tv.setText("Hey you adventure lovers! Whats your next stop?");
@@ -135,8 +139,7 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, adventure);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
-
-                    return adapter;
+                    break;
                 }
                 default: {
                     tv.setText("For outdoor fun, what would you prefer?");
@@ -144,20 +147,18 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, outdoor);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
-                    return adapter;
+                    break;
 
                 }
             }
 
 
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_multiple_choice, outdoor);
-        return adapter;
+
     }
 
 
-    public void addToList(ArrayAdapter<String> adapter)
+    public void addToList()
     {
         SparseBooleanArray checked = lv.getCheckedItemPositions();
         for (int i = 0; i < checked.size(); i++) {
@@ -166,7 +167,7 @@ public class Questionnaire extends Activity {
 
             if (checked.valueAt(i))
 
-                finalSelectedItems.add(adapter.getItem(position));
+                finalSelectedItems.add((String)lv.getAdapter().getItem(position));
         }
     }
 
