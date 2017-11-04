@@ -16,10 +16,11 @@ public class Questionnaire extends Activity {
     ListView lv;
     Button b1;
     TextView tv;
-    public int i=0;
+    public int i = 0;
     String[] resultArr;
-    public ArrayAdapter<String> adapter;
+
     public ArrayList<String> finalSelectedItems = new ArrayList<String>();
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +31,18 @@ public class Questionnaire extends Activity {
         resultArr = b.getStringArray("selectedItems");
         lv = (ListView) findViewById(R.id.outputList);
         b1 = (Button) findViewById(R.id.button);
-        tv=(TextView) findViewById(R.id.textView2);
-
-        initialize();
+        tv = (TextView) findViewById(R.id.textView2);
+        ArrayAdapter<String> adapter = initialize();
+        addToList(adapter);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(i < resultArr.length)
-                {
-                    addToList();
-                    initialize();
-                }
+                if (i < resultArr.length) {
 
-                else {
+                    ArrayAdapter<String> adapter = initialize();
+                    addToList(adapter);
+                } else {
                     goToNext();
                 }
 
@@ -53,7 +52,7 @@ public class Questionnaire extends Activity {
 
     }
 
-    public void initialize() {
+    public ArrayAdapter<String> initialize() {
 
         String[] historical = getResources().getStringArray(R.array.historial_array);
         String[] shopping = getResources().getStringArray(R.array.shopping_array);
@@ -70,10 +69,10 @@ public class Questionnaire extends Activity {
         } else {
             if (resultArr.length == 1 || i == resultArr.length - 1) {
                 b1.setText("Submit");
-            }
-            else {
+            } else {
                 b1.setText("Next");
             }
+
 
             switch (resultArr[i++]) {
                 case "Historical Places": {
@@ -82,8 +81,9 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, historical);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
+                    return adapter;
 
-                    break;
+
                 }
                 case "Places to Shop": {
                     tv.setText("Would you rather visit malls to shop or explore local markets");
@@ -92,7 +92,7 @@ public class Questionnaire extends Activity {
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
 
-                    break;
+                    return adapter;
                 }
                 case "Religious Places": {
                     tv.setText("Which religious place would you like to visit?");
@@ -100,8 +100,8 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, religious);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
+                    return adapter;
 
-                    break;
                 }
                 case "For Nature and Animal Lovers": {
                     tv.setText("Hey Nature and Animal Lovers out there! Where would you like to go?");
@@ -109,8 +109,8 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, nature);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
+                    return adapter;
 
-                    break;
                 }
                 case "Kids Friendly": {
                     tv.setText("What would your kids like to explore?");
@@ -118,8 +118,7 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, kids);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
-
-                    break;
+                    return adapter;
                 }
                 case "Culture and Art Lovers": {
                     tv.setText("Hey Art Lovers! Where would you like to go?");
@@ -128,7 +127,7 @@ public class Questionnaire extends Activity {
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
 
-                    break;
+                    return adapter;
                 }
                 case "Amusement and Adventure activities": {
                     tv.setText("Hey you adventure lovers! Whats your next stop?");
@@ -137,7 +136,7 @@ public class Questionnaire extends Activity {
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
 
-                    break;
+                    return adapter;
                 }
                 default: {
                     tv.setText("For outdoor fun, what would you prefer?");
@@ -145,16 +144,20 @@ public class Questionnaire extends Activity {
                             android.R.layout.simple_list_item_multiple_choice, outdoor);
                     lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
                     lv.setAdapter(adapter);
+                    return adapter;
 
-                    break;
                 }
             }
 
 
         }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_multiple_choice, outdoor);
+        return adapter;
     }
 
-    public void addToList()
+
+    public void addToList(ArrayAdapter<String> adapter)
     {
         SparseBooleanArray checked = lv.getCheckedItemPositions();
         for (int i = 0; i < checked.size(); i++) {
@@ -162,6 +165,7 @@ public class Questionnaire extends Activity {
             int position = checked.keyAt(i);
 
             if (checked.valueAt(i))
+
                 finalSelectedItems.add(adapter.getItem(position));
         }
     }
