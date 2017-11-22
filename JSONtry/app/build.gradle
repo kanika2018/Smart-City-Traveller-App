@@ -1,13 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-
-        useLibrary 'org.apache.http.legacy'
-
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
-        applicationId "com.example.kanika.smartcitytraveller"
+        applicationId "com.example.kanika.jsontry"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
@@ -29,6 +26,5 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:26.+'
     testCompile 'junit:junit:4.12'
 }

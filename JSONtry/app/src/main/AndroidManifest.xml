@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kanika.smartcitytraveller">
+    package="com.example.kanika.jsontry">
     <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,18 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Top_Picks" />
-        <activity
-            android:name=".Plan_Your_Day"
-            android:label="@string/title_activity_plan__your__day"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Bookmarks" />
-        <activity
-            android:name=".Questionnaire"
-            android:label="@string/title_activity_questionnaire"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Eating_Places" />
-        <activity android:name=".Chosen_Places"></activity>
     </application>
 
 </manifest>
