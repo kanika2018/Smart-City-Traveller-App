@@ -26,25 +26,24 @@ import java.util.List;
 
 
 public class Eating_Places extends ListActivity {
-    ArrayList venuesList;
+    ArrayList<FoursquareVenue> venuesList;
 
     // the foursquare client_id and the client_secret
-    final String CLIENT_ID = "CWIB5QARTPRLLQIVCYKM5MVXYSQCRGYM1VZ31AJ4DCIMKEJ";
-    final String CLIENT_SECRET = "4SDDGS3PYQ5JQOX4WU0XJTXAKH1HSHEFQ1I21V4KHDR15PG";
+
 
     // we will need to take the latitude and the logntitude from a certain point
     // this is the center of New York
-    //String Client_ID = "VIEQ0QX5GAJ1XLDJABA5WBS54XCVTNWLNY2NLAZVNB2ZDUYM";
-    //String Client_Secret = "COARL4531NXUEZTWDE21201TRAZXPEFIQKXFY4AJKHWHDXOT";
-    final String latitude = "40.7463956";
-    final String longtitude = "-73.9852992";
+    String Client_ID = "VIEQ0QX5GAJ1XLDJABA5WBS54XCVTNWLNY2NLAZVNB2ZDUYM";
+    String Client_Secret = "COARL4531NXUEZTWDE21201TRAZXPEFIQKXFY4AJKHWHDXOT";
+    final String latitude = "28.7041";
+    final String longtitude = "77.1025";
 
     ArrayAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_eating__places);
 
         // start the AsyncTask that makes the call for the venus search.
         new fourquare().execute();
@@ -57,7 +56,7 @@ public class Eating_Places extends ListActivity {
         @Override
         protected String doInBackground(View... urls) {
             // make Call to the url
-            temp = makeCall("https://api.foursquare.com/v2/venues/search?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=40.7463956,-73.9852992");
+            temp = makeCall("https://api.foursquare.com/v2/venues/search?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=28.7041,77.1025");
             return "";
         }
 
