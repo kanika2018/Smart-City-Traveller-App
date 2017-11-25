@@ -33,8 +33,9 @@ public class Eating_Places extends ListActivity {
 
     // we will need to take the latitude and the logntitude from a certain point
     // this is the center of New York
-    String Client_ID = "VIEQ0QX5GAJ1XLDJABA5WBS54XCVTNWLNY2NLAZVNB2ZDUYM";
-    String Client_Secret = "COARL4531NXUEZTWDE21201TRAZXPEFIQKXFY4AJKHWHDXOT";
+    String CLIENT_ID = "LQNZF0F2WTMRUIGRCRZHR2UOSVIE2ADHKAA4OL5XMYTCXCHZ";
+    String CLIENT_SECRET = "A4P4ZT1HITLBRWM3ZGHY3J3FDDJNLDLTRBKP5NYWXK5P2CHS";
+    String CAT_ID="4d4b7105d754a06374d81259&";
     final String latitude = "28.7041";
     final String longtitude = "77.1025";
 
@@ -56,7 +57,7 @@ public class Eating_Places extends ListActivity {
         @Override
         protected String doInBackground(View... urls) {
             // make Call to the url
-            temp = makeCall("https://api.foursquare.com/v2/venues/search?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=28.7041,77.1025");
+            temp = makeCall("https://api.foursquare.com/v2/venues/search?ll=radius=10000&limit=50&categoryId="+CAT_ID+"&client_id" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=28.7041,77.1025");
             return "";
         }
 
