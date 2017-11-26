@@ -36,8 +36,8 @@ public class Eating_Places extends ListActivity {
     String CLIENT_ID = "";
     String CLIENT_SECRET = "";
     String CAT_ID="4d4b7105d754a06374d81259&";
-    final String latitude = "28.7041";
-    final String longtitude = "77.1025";
+    final String latitude = "28.70";
+    final String longtitude = "77.10";
 
     ArrayAdapter myAdapter;
 
@@ -57,7 +57,7 @@ public class Eating_Places extends ListActivity {
         @Override
         protected String doInBackground(View... urls) {
             // make Call to the url
-            temp = makeCall("https://api.foursquare.com/v2/venues/search?ll=radius=10000&limit=50&categoryId="+CAT_ID+"&client_id" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=28.7041,77.1025");
+            temp = makeCall("https://api.foursquare.com/v2/venues/search?&radius=10000&limit=50&categoryId="+CAT_ID+"&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=28.70,77.10");
             return "";
         }
 
