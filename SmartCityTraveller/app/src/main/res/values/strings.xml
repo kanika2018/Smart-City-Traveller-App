@@ -3,6 +3,31 @@
     <string name="title_activity_plan__your__day">Plan_Your_Day</string>
     <string name="title_activity_eating__places">Eating_Places</string>
     <string name="hello">Hello World, ListViewMultipleSelectionActivity!</string>
+    <string name="intro_message">
+        <![CDATA[
+
+
+            This sample uses the PlaceAutocompleteFragment from the Places API for Android within a
+            CardView to provide an autocomplete powered search experience. Once a place is selected,
+            its details are displayed.
+
+
+        ]]>
+    </string>
+    <string name="place_details">
+    <![CDATA[
+        <b>%1$s</b>
+        <br/>
+        <i>Place Id: %2$s</i>
+        <br/>
+        Address: %3$s
+        <br/>
+        Phone: %4$s
+        <br/>
+        Website: %5$s
+    ]]>
+    </string>
+    <string name="selected_place">Last Selected Place:</string>
 
     <string name="result_activity">ResultActivity</string>
     <string name="submit">Submit</string>
