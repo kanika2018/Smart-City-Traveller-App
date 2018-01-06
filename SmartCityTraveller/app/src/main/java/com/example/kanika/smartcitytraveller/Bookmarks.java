@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.GeoDataClient;
+import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
@@ -21,12 +22,13 @@ import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 
 public class Bookmarks extends AppCompatActivity  implements PlaceSelectionListener {
 
-    private TextView mPlaceDetailsText;
+    protected TextView mPlaceDetailsText;
 
-    private TextView mPlaceAttribution;
+    protected TextView mPlaceAttribution;
     private static final String TAG = MainActivity.class.getSimpleName();
     private GoogleApiClient mGoogleApiClient;
     private GeoDataClient mGeoDataClient;
+    private PlaceDetectionClient mPlaceDetectionClient;
 
 
     @Override
@@ -42,9 +44,8 @@ public class Bookmarks extends AppCompatActivity  implements PlaceSelectionListe
                 .Builder(this)
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
-                .enableAutoManage(this, this)
+                .enableAutoManage(this, (GoogleApiClient.OnConnectionFailedListener) this)
                 .build();
-    }
 
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
@@ -57,8 +58,8 @@ public class Bookmarks extends AppCompatActivity  implements PlaceSelectionListe
         // Retrieve the TextViews that will display details about the selected place.
         mPlaceDetailsText = (TextView) findViewById(R.id.place_details);
         mPlaceAttribution = (TextView) findViewById(R.id.place_attribution);
-    }
 
+    }
     /**
      * Callback invoked when a place has been selected from the PlaceAutocompleteFragment.
      */
