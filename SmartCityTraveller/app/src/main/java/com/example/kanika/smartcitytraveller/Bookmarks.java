@@ -25,6 +25,7 @@ public class Bookmarks extends AppCompatActivity  implements PlaceSelectionListe
 
     private TextView mPlaceAttribution;
     private static final String TAG = MainActivity.class.getSimpleName();
+    public static final String GOOGLE_PLACE_API_KEY = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
