@@ -3,6 +3,7 @@ package com.example.kanika.smartcitytraveller;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Spanned;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.GeoDataClient;
@@ -19,8 +21,10 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 
-public class Bookmarks extends AppCompatActivity  implements PlaceSelectionListener {
+public class Bookmarks extends AppCompatActivity  implements PlaceSelectionListener, OnConnectionFailedListener {
 
     protected TextView mPlaceDetailsText;
 
@@ -44,7 +48,7 @@ public class Bookmarks extends AppCompatActivity  implements PlaceSelectionListe
                 .Builder(this)
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
-                .enableAutoManage(this, (GoogleApiClient.OnConnectionFailedListener) this)
+                .enableAutoManage(this, this)
                 .build();
 
 
@@ -99,6 +103,11 @@ public class Bookmarks extends AppCompatActivity  implements PlaceSelectionListe
                 websiteUri));
         return Html.fromHtml(res.getString(R.string.place_details, name, id, address, phoneNumber,
                 websiteUri));
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 }
