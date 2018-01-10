@@ -33,7 +33,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity  {
 
-    Button top_picks, plan_your_day, bookmarks, eating_places;
+    Button top_picks, plan_your_day, bookmarks, eating_places, fetch_location;
 
 
     @Override
@@ -50,6 +50,17 @@ public class MainActivity extends Activity  {
                 startActivity(i);
             }
         });
+
+        fetch_location = (Button) findViewById(R.id.location);
+        fetch_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(MainActivity.this, Location.class);
+                startActivity(i);
+            }
+        });
+
         plan_your_day = (Button) findViewById(R.id.plan);
         plan_your_day.setOnClickListener(new View.OnClickListener() {
             @Override
