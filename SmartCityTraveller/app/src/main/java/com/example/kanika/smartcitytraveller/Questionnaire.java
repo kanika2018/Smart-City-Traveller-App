@@ -2,6 +2,7 @@ package com.example.kanika.smartcitytraveller;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
@@ -13,6 +14,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class Questionnaire extends Activity {
+    SharedPreferences sharedpreferences;
+    public static final String chosen_places = "chosenPlacesKey";
+    public static final String mypreference = "mypref";
     ListView lv;
     Button b1;
     TextView tv;
@@ -180,18 +184,27 @@ public class Questionnaire extends Activity {
         for (int i = 0; i < finalSelectedItems.size(); i++) {
             outputStrArr[i] = finalSelectedItems.get(i);
         }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < outputStrArr.length; i++) {
+            sb.append(outputStrArr[i]).append(",");
+        }
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString(chosen_places, sb.toString());
+
+        editor.commit();
+
 
         //b1.setText(outputStrArr[0]);
 
         Intent intent = new Intent(getApplicationContext(),
-                Chosen_Places.class);
+                Location.class);
 
         // Create a bundle object
-        Bundle b = new Bundle();
-        b.putStringArray("finalSelectedItems", outputStrArr);
+        //Bundle b = new Bundle();
+        //b.putStringArray("finalSelectedItems", outputStrArr);
 
         // Add the bundle to the intent.
-        intent.putExtras(b);
+        //intent.putExtras(b);
 
         // start the ResultActivity
         startActivity(intent);

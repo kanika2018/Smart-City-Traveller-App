@@ -66,5 +66,14 @@ android:layout_height="match_parent">
         android:id="@+id/tvPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/plan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="getPlace"
+        android:text="Generate my plan" />
+
+
 </LinearLayout>
 </ScrollView>

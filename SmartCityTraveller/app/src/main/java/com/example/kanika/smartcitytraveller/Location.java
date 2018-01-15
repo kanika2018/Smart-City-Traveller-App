@@ -14,6 +14,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
     private PlaceDetectionClient mPlaceDetectionClient;
     TextView tvPlace;
     int PLACE_PICKER_REQUEST = 1;
+    Button plan;
 
 
     @Override
@@ -52,6 +54,7 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
         mGeoDataClient = Places.getGeoDataClient(this, null);
 
         tvPlace = (TextView) findViewById(R.id.tvPlace);
+        plan=(Button) findViewById(R.id.plan);
 
         // Construct a PlaceDetectionClient.
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
@@ -73,6 +76,16 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
         // Retrieve the TextViews that will display details about the selected place.
         mPlaceDetailsText = (TextView) findViewById(R.id.place_details);
         mPlaceAttribution = (TextView) findViewById(R.id.place_attribution);
+        plan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent();
+                i.setClass(Location.this, Chosen_Places.class);
+                startActivity(i);
+
+
+            }
+        });
 
     }
     /**
