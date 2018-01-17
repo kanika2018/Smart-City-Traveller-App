@@ -1,6 +1,7 @@
 package com.example.kanika.smartcitytraveller;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,9 +15,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class Questionnaire extends Activity {
-    SharedPreferences sharedpreferences;
+
     public static final String chosen_places = "chosenPlacesKey";
     public static final String mypreference = "mypref";
+    SharedPreferences sharedpreferences = getSharedPreferences(mypreference,Context.MODE_PRIVATE);
     ListView lv;
     Button b1;
     TextView tv;
