@@ -1,6 +1,8 @@
 package com.example.kanika.smartcitytraveller;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -36,7 +38,8 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 public class Location extends AppCompatActivity implements PlaceSelectionListener, OnConnectionFailedListener  {
 
     protected TextView mPlaceDetailsText;
-
+    public static String latitude="";
+    public static String longitude="";
     protected TextView mPlaceAttribution;
     private static final String TAG = MainActivity.class.getSimpleName();
     private GoogleApiClient mGoogleApiClient;
@@ -45,6 +48,9 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
     TextView tvPlace;
     int PLACE_PICKER_REQUEST = 1;
     Button plan;
+    public static final String mypreference = "mypref";
+    SharedPreferences sharedpreferences;
+    public static final String location = "LocationKey";
 
 
     @Override
@@ -52,7 +58,8 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
         mGeoDataClient = Places.getGeoDataClient(this, null);
-
+        getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
         tvPlace = (TextView) findViewById(R.id.tvPlace);
         plan=(Button) findViewById(R.id.plan);
 
@@ -93,7 +100,19 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
      */
     @Override
     public void onPlaceSelected(Place place) {
+
+        latitude=Double.toString(place.getLatLng().latitude);
+        longitude=Double.toString(place.getLatLng().longitude);
+        sharedpreferences=getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
         Log.i(TAG, "Place Selected: " + place.getName());
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString(location, latitude );
+        editor.putString(location, longitude);
+        editor.commit();
+
+
+
 
         // Format the returned place's details and display them in the TextView.
         mPlaceDetailsText.setText(formatPlaceDetails(getResources(), place.getName(), place.getId(),
@@ -198,6 +217,7 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
         }
         super.onStop();
     }
+
 
 
 }

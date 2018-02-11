@@ -18,7 +18,7 @@ public class Questionnaire extends Activity {
 
     public static final String chosen_places = "chosenPlacesKey";
     public static final String mypreference = "mypref";
-    SharedPreferences sharedpreferences = getSharedPreferences(mypreference,Context.MODE_PRIVATE);
+    SharedPreferences sharedpreferences;
     ListView lv;
     Button b1;
     TextView tv;
@@ -32,7 +32,7 @@ public class Questionnaire extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaire);
-
+        sharedpreferences = getSharedPreferences(mypreference,Context.MODE_PRIVATE);
         Bundle b = getIntent().getExtras();
         resultArr = b.getStringArray("selectedItems");
         lv = (ListView) findViewById(R.id.outputList);

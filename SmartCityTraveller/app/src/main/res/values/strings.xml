@@ -44,15 +44,15 @@
     <string name="title_activity_questionnaire">Questionnaire</string>
 
     <string-array name="historial_array">
-        <item>Historic Sites</item>
-        <item>Monuments and Memorials</item>
-        <item>Historical museums</item>
+        <item>History museum</item>
+        <item>Monument / Landmark</item>
+
 
     </string-array>
 
     <string-array name="shopping_array">
-        <item>Malls</item>
-        <item>Local Markets</item>
+        <item>Shopping Mall</item>
+        <item>Flea Market</item>
 
     </string-array>
 
@@ -62,56 +62,50 @@
         <item>Church</item>
         <item>Mosque</item>
         <item>Synagogue</item>
-        <item>Hof</item>
-        <item>Others</item>
+
 
     </string-array>
 
     <string-array name="kids_array">
 
         <item>Theme Parks</item>
-        <item>Zoos</item>
-        <item>Aquariums</item>
         <item>Museums</item>
-        <item>Parks</item>
         <item>Cinema</item>
+        <item>Water parks</item>
 
     </string-array>
 
     <string-array name="nature_array">
 
-        <item>National Parks</item>
+        <item>National Park</item>
         <item>Zoos</item>
         <item>Aquariums</item>
-        <item>Bio-Diversity Parks</item>
+
 
     </string-array>
 
     <string-array name="art_array">
 
-        <item>Museums</item>
         <item>Art Galleries</item>
         <item>Fairs</item>
-        <item>Monuments</item>
-        <item>Cinema</item>
+        <item>Art Museums</item>
+        <item>Indie Movie Theatre</item>
 
     </string-array>
 
     <string-array name="adventure_array">
 
-        <item>Adventure Parks</item>
+
         <item>Gaming Cantres</item>
         <item>Casinos</item>
-        <item>Trails and Hikes</item>
+
     </string-array>
 
     <string-array name="outdoor_array">
 
-        <item>Trails and Hikes</item>
-        <item>Camping Grounds</item>
+        <item>Trails and hikes</item>
+        <item>Camping grounds</item>
         <item>Stadiums</item>
-        <item>Historial Sites</item>
-        <item>Beaches</item>
 
     </string-array>
 
