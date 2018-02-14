@@ -63,6 +63,7 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
         tvPlace = (TextView) findViewById(R.id.tvPlace);
         plan=(Button) findViewById(R.id.plan);
 
+
         // Construct a PlaceDetectionClient.
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
         mGoogleApiClient = new GoogleApiClient
@@ -102,6 +103,7 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
     public void onPlaceSelected(Place place) {
 
         latitude=Double.toString(place.getLatLng().latitude);
+        //b.setText(latitude);
         longitude=Double.toString(place.getLatLng().longitude);
         sharedpreferences=getSharedPreferences(mypreference,
                 Context.MODE_PRIVATE);
@@ -191,6 +193,8 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
         }
 
         tvPlace.setText(builder.toString());
+
+
     }
 
 

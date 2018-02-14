@@ -32,12 +32,12 @@ import static com.example.kanika.smartcitytraveller.Questionnaire.chosen_places;
 public class Chosen_Places extends ListActivity {
     String CLIENT_ID = "";
     String CLIENT_SECRET = "";
-    String CAT_ID = "";
+    String CAT_ID = "4bf58dd8d48988d1fd941735";
     ArrayList<FoursquareVenue> venuesList;
     SharedPreferences sharedpreferences;
     public static final String mypreference = "mypref";
-    public String lat="";
-    public String lng="";
+    public String lat="28.70";
+    public String lng="77.10";
     //ListView lv;
     String[] resultArr;
     ArrayAdapter myAdapter;
@@ -78,9 +78,9 @@ public class Chosen_Places extends ListActivity {
         sharedpreferences = getSharedPreferences(mypreference,
                 Context.MODE_PRIVATE);
         String result = sharedpreferences.getString(chosen_places, "");
-        lat = sharedpreferences.getString(latitude, "");
-        lng = sharedpreferences.getString(longitude, "");
+
         resultArr = result.split(",");
+        new Chosen_Places.fourquare().execute();
 
 
         //Bundle b = getIntent().getExtras();
@@ -101,7 +101,13 @@ public class Chosen_Places extends ListActivity {
                 if (hm.containsKey(resultArr[0])) {
                     CAT_ID = hm.get(resultArr[0]);
                 }
-                temp = makeCall("https://api.foursquare.com/v2/venues/search?&radius=10000&limit=50&categoryId=" + CAT_ID + "&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=" + lat + "." + lng);
+           lat = sharedpreferences.getString(latitude, "");
+            System.out.println(lat);
+            //String latf=lat.substring(0,6);
+            lng = sharedpreferences.getString(longitude, "");
+            System.out.println(lng);
+            //String lngf=lng.substring(0,6);
+                temp = makeCall("https://api.foursquare.com/v2/venues/search?&radius=10000&limit=50&categoryId=" + CAT_ID + "&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=" + lat + "," +lng);
                 return "";
 
         }
