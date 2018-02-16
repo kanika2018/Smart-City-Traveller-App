@@ -103,7 +103,6 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
     public void onPlaceSelected(Place place) {
 
         latitude=Double.toString(place.getLatLng().latitude);
-        //b.setText(latitude);
         longitude=Double.toString(place.getLatLng().longitude);
         sharedpreferences=getSharedPreferences(mypreference,
                 Context.MODE_PRIVATE);
@@ -170,10 +169,23 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
         }
     }
 
+    //function for current place selection begin
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Place place=PlacePicker.getPlace( data, this );
         if (requestCode == PLACE_PICKER_REQUEST && resultCode == RESULT_OK) {
-            displayPlace(PlacePicker.getPlace( data, this ));
+            displayPlace(place);
         }
+
+        latitude=Double.toString(place.getLatLng().latitude);
+        longitude=Double.toString(place.getLatLng().longitude);
+        sharedpreferences=getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+        Log.i(TAG, "Place Selected: " + place.getName());
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString(location, latitude );
+        editor.putString(location, longitude);
+        editor.commit();
     }
 
     private void displayPlace(Place place) {

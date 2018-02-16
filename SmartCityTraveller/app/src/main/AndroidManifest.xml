@@ -34,7 +34,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="" />
+            android:value="" /> //google places API
 
         <activity android:name=".Location"></activity>
     </application>

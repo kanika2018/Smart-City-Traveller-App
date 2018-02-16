@@ -30,11 +30,8 @@ public class Eating_Places extends ListActivity {
 
     // the foursquare client_id and the client_secret
 
-
-    // we will need to take the latitude and the logntitude from a certain point
-    // this is the center of New York
     String CLIENT_ID = "";
-    String CLIENT_SECRET = "";
+    String CLIENT_SECRET = "A4P4ZT1HITLBRWM3ZGHY3J3FDDJNLDLTRBKP5NYWXK5P2CHS";
     String CAT_ID="4d4b7105d754a06374d81259&";
     final String latitude = "28.70";
     final String longtitude = "77.10";

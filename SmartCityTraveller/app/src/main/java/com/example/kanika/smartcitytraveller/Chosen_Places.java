@@ -38,19 +38,20 @@ public class Chosen_Places extends ListActivity {
     public static final String mypreference = "mypref";
     public String lat="28.70";
     public String lng="77.10";
-    //ListView lv;
-    String[] resultArr;
+
+    public static ArrayList<FoursquareVenue> temp = new ArrayList<FoursquareVenue>();
+    String[] resultArr;  //stores chosen places of the questionnaire
     ArrayAdapter myAdapter;
 
-    public HashMap<String, String> hm = new HashMap<>();
+    public HashMap<String, String> hm = new HashMap<>(); //hashmap ontaining all the ategories and their ids
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chosen__places);
-
+        temp.clear();
         hm.put("History museum", "4bf58dd8d48988d190941735");
-        hm.put("Monument", "4bf58dd8d48988d12d941735");
+        hm.put("Monument","4bf58dd8d48988d12d941735");
         hm.put("Shopping Mall", "4bf58dd8d48988d1fd941735");
         hm.put("Flea Market", "4bf58dd8d48988d1f7941735");
         hm.put("Temples(Jain/Hindu/Buddhist)", "4bf58dd8d48988d13a941735");
@@ -74,21 +75,21 @@ public class Chosen_Places extends ListActivity {
         hm.put("Camping grounds", "4bf58dd8d48988d1e4941735");
         hm.put("Stadiums", "4bf58dd8d48988d184941735");
 
-
+        //ArrayList<FoursquareVenue> temp = new ArrayList<FoursquareVenue>();
         sharedpreferences = getSharedPreferences(mypreference,
                 Context.MODE_PRIVATE);
         String result = sharedpreferences.getString(chosen_places, "");
 
         resultArr = result.split(",");
-        new Chosen_Places.fourquare().execute();
+        for(int i=0;i<resultArr.length;i++)
+        {
+            if (hm.containsKey(resultArr[i])) {
+                CAT_ID = hm.get(resultArr[i]);
+            }
 
+            new Chosen_Places.fourquare().execute();
+        }
 
-        //Bundle b = getIntent().getExtras();
-        //resultArr = b.getStringArray("finalSelectedItems");
-        //lv = (ListView) findViewById(R.id.list);
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                //android.R.layout.simple_list_item_single_choice, resultArr);
-        //lv.setAdapter(adapter);
     }
 
     private class fourquare extends AsyncTask<View, Void, String> {
@@ -98,20 +99,15 @@ public class Chosen_Places extends ListActivity {
         @Override
         protected String doInBackground(View... urls) {
             // make Call to the url
-                if (hm.containsKey(resultArr[0])) {
-                    CAT_ID = hm.get(resultArr[0]);
-                }
+
+
            lat = sharedpreferences.getString(latitude, "");
-            System.out.println(lat);
-            //String latf=lat.substring(0,6);
             lng = sharedpreferences.getString(longitude, "");
-            System.out.println(lng);
-            //String lngf=lng.substring(0,6);
+
                 temp = makeCall("https://api.foursquare.com/v2/venues/search?&radius=10000&limit=50&categoryId=" + CAT_ID + "&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=" + lat + "," +lng);
                 return "";
 
         }
-
 
         @Override
         protected void onPreExecute() {
@@ -122,26 +118,28 @@ public class Chosen_Places extends ListActivity {
         protected void onPostExecute(String result) {
             if (temp == null) {
                 // we have an error to the call
-                // we can also stop the progress bar
-            } else {
-                // all things went right
+        // we can also stop the progress bar
+        }
 
-                // parseFoursquare venues search result
-                venuesList = (ArrayList<FoursquareVenue>) parseFoursquare(temp);
+        // on execution
+        else {
 
-                List<String> listTitle = new ArrayList<String>();
+        // parseFoursquare venues search result
+        venuesList = (ArrayList<FoursquareVenue>) parseFoursquare(temp);
 
-                for (int i = 0; i < venuesList.size(); i++) {
-                    // make a list of the venus that are loaded in the list.
-                    // show the name, the category and the city
-                    listTitle.add(i, venuesList.get(i).getName() + ", " + venuesList.get(i).getCategory() + "" + venuesList.get(i).getCity());
-                }
+        List<String> listTitle = new ArrayList<String>();
 
-                // set the results to the list
-                // and show them in the xml
-                myAdapter = new ArrayAdapter<String>(Chosen_Places.this, R.layout.row_layout, R.id.listText, listTitle);
-                setListAdapter(myAdapter);
-            }
+        for (int i = 0; i < venuesList.size(); i++) {
+            // make a list of the venus that are loaded in the list.
+            // show the name, the category and the city
+            listTitle.add(i, venuesList.get(i).getName() + ", " + venuesList.get(i).getCategory() + "" + venuesList.get(i).getCity());
+        }
+
+        // set the results to the list
+        // and show them in the xml
+        myAdapter = new ArrayAdapter<String>(Chosen_Places.this, R.layout.row_layout, R.id.listText, listTitle);
+        setListAdapter(myAdapter);
+    }
         }
     }
 
@@ -179,7 +177,8 @@ public class Chosen_Places extends ListActivity {
 
     private static ArrayList<FoursquareVenue> parseFoursquare(final String response) {
 
-        ArrayList<FoursquareVenue> temp = new ArrayList<FoursquareVenue>();
+        //i have declared this temp arraylist as public so that temp.add() keeps on adding the result for all categories
+        //ArrayList<FoursquareVenue> temp = new ArrayList<FoursquareVenue>();
         try {
 
             // make an jsonObject in order to parse the response
