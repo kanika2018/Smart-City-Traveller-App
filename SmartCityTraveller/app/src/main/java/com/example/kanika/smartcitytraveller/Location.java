@@ -50,7 +50,10 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
     Button plan;
     public static final String mypreference = "mypref";
     SharedPreferences sharedpreferences;
-    public static final String location = "LocationKey";
+    public static final String location1 = "LocationKey1";
+    public static final String location2 = "LocationKey2";
+    public static final String location3 = "LocationKey3";
+    public static final String location4 = "LocationKey4";
 
 
     @Override
@@ -108,8 +111,8 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
                 Context.MODE_PRIVATE);
         Log.i(TAG, "Place Selected: " + place.getName());
         SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString(location, latitude );
-        editor.putString(location, longitude);
+        editor.putString(location1, latitude );
+        editor.putString(location2, longitude);
         editor.commit();
 
 
@@ -175,17 +178,18 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
         Place place=PlacePicker.getPlace( data, this );
         if (requestCode == PLACE_PICKER_REQUEST && resultCode == RESULT_OK) {
             displayPlace(place);
+            latitude=Double.toString(place.getLatLng().latitude);
+            longitude=Double.toString(place.getLatLng().longitude);
+            sharedpreferences=getSharedPreferences(mypreference,
+                    Context.MODE_PRIVATE);
+            Log.i(TAG, "Place Selected: " + place.getName());
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString(location1, latitude );
+            editor.putString(location2, longitude);
+            editor.commit();
         }
 
-        latitude=Double.toString(place.getLatLng().latitude);
-        longitude=Double.toString(place.getLatLng().longitude);
-        sharedpreferences=getSharedPreferences(mypreference,
-                Context.MODE_PRIVATE);
-        Log.i(TAG, "Place Selected: " + place.getName());
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString(location, latitude );
-        editor.putString(location, longitude);
-        editor.commit();
+
     }
 
     private void displayPlace(Place place) {

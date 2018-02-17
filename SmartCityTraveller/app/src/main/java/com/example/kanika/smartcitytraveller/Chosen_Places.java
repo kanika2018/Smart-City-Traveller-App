@@ -25,14 +25,19 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.example.kanika.smartcitytraveller.Location.latitude;
-import static com.example.kanika.smartcitytraveller.Location.location;
+import static com.example.kanika.smartcitytraveller.Location.location1;
+import static com.example.kanika.smartcitytraveller.Location.location2;
+import static com.example.kanika.smartcitytraveller.Location.location3;
+import static com.example.kanika.smartcitytraveller.Location.location4;
+
+
 import static com.example.kanika.smartcitytraveller.Location.longitude;
 import static com.example.kanika.smartcitytraveller.Questionnaire.chosen_places;
 
 public class Chosen_Places extends ListActivity {
     String CLIENT_ID = "";
     String CLIENT_SECRET = "";
-    String CAT_ID = "4bf58dd8d48988d1fd941735";
+    String CAT_ID = "";
     ArrayList<FoursquareVenue> venuesList;
     SharedPreferences sharedpreferences;
     public static final String mypreference = "mypref";
@@ -81,14 +86,8 @@ public class Chosen_Places extends ListActivity {
         String result = sharedpreferences.getString(chosen_places, "");
 
         resultArr = result.split(",");
-        for(int i=0;i<resultArr.length;i++)
-        {
-            if (hm.containsKey(resultArr[i])) {
-                CAT_ID = hm.get(resultArr[i]);
-            }
 
-            new Chosen_Places.fourquare().execute();
-        }
+        new Chosen_Places.fourquare().execute();
 
     }
 
@@ -100,9 +99,22 @@ public class Chosen_Places extends ListActivity {
         protected String doInBackground(View... urls) {
             // make Call to the url
 
+            for(int i=0;i<resultArr.length-1;i++)
+            {
+                if (hm.containsKey(resultArr[i])) {
+                    CAT_ID += hm.get(resultArr[i]);
+                    CAT_ID+=",";
+                }
 
-           lat = sharedpreferences.getString(latitude, "");
-            lng = sharedpreferences.getString(longitude, "");
+
+            }
+            if (hm.containsKey(resultArr[resultArr.length-1]))
+            {
+                CAT_ID+=hm.get(resultArr[resultArr.length-1]);
+            }
+
+           lat = sharedpreferences.getString(location1, "");
+            lng = sharedpreferences.getString(location2, "");
 
                 temp = makeCall("https://api.foursquare.com/v2/venues/search?&radius=10000&limit=50&categoryId=" + CAT_ID + "&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=" + lat + "," +lng);
                 return "";

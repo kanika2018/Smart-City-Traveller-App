@@ -31,7 +31,7 @@ public class Eating_Places extends ListActivity {
     // the foursquare client_id and the client_secret
 
     String CLIENT_ID = "";
-    String CLIENT_SECRET = "A4P4ZT1HITLBRWM3ZGHY3J3FDDJNLDLTRBKP5NYWXK5P2CHS";
+    String CLIENT_SECRET = "";
     String CAT_ID="4d4b7105d754a06374d81259&";
     final String latitude = "28.70";
     final String longtitude = "77.10";
