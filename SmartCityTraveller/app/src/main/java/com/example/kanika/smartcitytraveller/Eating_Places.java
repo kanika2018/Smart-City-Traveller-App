@@ -2,6 +2,8 @@ package com.example.kanika.smartcitytraveller;
 
 
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -20,9 +22,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
+import static com.example.kanika.smartcitytraveller.Location.location1;
+import static com.example.kanika.smartcitytraveller.Location.location2;
 
 
 public class Eating_Places extends ListActivity {
@@ -35,7 +36,8 @@ public class Eating_Places extends ListActivity {
     String CAT_ID="4d4b7105d754a06374d81259&";
     final String latitude = "28.70";
     final String longtitude = "77.10";
-
+    SharedPreferences sharedpreferences;
+    public static final String mypreference = "mypref";
     ArrayAdapter myAdapter;
 
     @Override
@@ -51,10 +53,16 @@ public class Eating_Places extends ListActivity {
 
         String temp;
 
+
         @Override
         protected String doInBackground(View... urls) {
-            // make Call to the url
-            temp = makeCall("https://api.foursquare.com/v2/venues/search?&radius=10000&limit=50&categoryId="+CAT_ID+"&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll=28.70,77.10");
+            sharedpreferences=getSharedPreferences(mypreference,
+                    Context.MODE_PRIVATE);
+            String lat = sharedpreferences.getString(location1, "");
+            String lng = sharedpreferences.getString(location2, "");
+
+            temp = makeCall("https://api.foursquare.com/v2/venues/search?&radius=10000&limit=50&categoryId="+CAT_ID+"&client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20130815&ll="+lat+","+lng);
+
             return "";
         }
 

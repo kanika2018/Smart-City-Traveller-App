@@ -27,8 +27,8 @@ import java.util.List;
 import static com.example.kanika.smartcitytraveller.Location.latitude;
 import static com.example.kanika.smartcitytraveller.Location.location1;
 import static com.example.kanika.smartcitytraveller.Location.location2;
-import static com.example.kanika.smartcitytraveller.Location.location3;
-import static com.example.kanika.smartcitytraveller.Location.location4;
+
+
 
 
 import static com.example.kanika.smartcitytraveller.Location.longitude;

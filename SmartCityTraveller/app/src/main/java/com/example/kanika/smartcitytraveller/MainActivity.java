@@ -1,6 +1,7 @@
 package com.example.kanika.smartcitytraveller;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,9 @@ import android.widget.Toast;
 public class MainActivity extends Activity  {
 
     Button top_picks, plan_your_day, bookmarks, eating_places, fetch_location;
+    public static final String mypreference = "mypref";
+    SharedPreferences sharedpreferences;
+    public static final String choice = "ChoiceKey";
 
 
     @Override
@@ -45,46 +49,47 @@ public class MainActivity extends Activity  {
         top_picks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(MainActivity.this, Top_Picks.class);
-                startActivity(i);
-            }
-        });
+                sharedpreferences=getSharedPreferences(mypreference,
+                        Context.MODE_PRIVATE);
 
-        fetch_location = (Button) findViewById(R.id.location);
-        fetch_location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(choice, "Top_Picks" );
                 Intent i = new Intent();
                 i.setClass(MainActivity.this, Location.class);
                 startActivity(i);
             }
         });
 
+
+
         plan_your_day = (Button) findViewById(R.id.plan);
         plan_your_day.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sharedpreferences=getSharedPreferences(mypreference,
+                        Context.MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(choice, "Plan_Your_Day" );
+
+                editor.commit();
                 Intent i = new Intent();
-                i.setClass(MainActivity.this, Plan_Your_Day.class);
+                i.setClass(MainActivity.this, Location.class);
                 startActivity(i);
             }
         });
-        bookmarks = (Button) findViewById(R.id.bookmark);
-        bookmarks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(MainActivity.this, Bookmarks.class);
-                startActivity(i);
-            }
-        });
+
         eating_places = (Button) findViewById(R.id.eat);
         eating_places.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sharedpreferences=getSharedPreferences(mypreference,
+                        Context.MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(choice, "Eating_places" );
                 Intent i = new Intent();
-                i.setClass(MainActivity.this, Eating_Places.class);
+                i.setClass(MainActivity.this, Location.class);
                 startActivity(i);
             }
         });

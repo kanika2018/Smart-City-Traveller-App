@@ -199,7 +199,7 @@ public class Questionnaire extends Activity {
         //b1.setText(outputStrArr[0]);
 
         Intent intent = new Intent(getApplicationContext(),
-                Location.class);
+                Chosen_Places.class);
 
         // Create a bundle object
         //Bundle b = new Bundle();

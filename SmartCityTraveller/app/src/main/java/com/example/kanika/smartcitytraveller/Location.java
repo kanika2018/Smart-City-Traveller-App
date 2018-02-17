@@ -35,6 +35,9 @@ import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 
+import static com.example.kanika.smartcitytraveller.MainActivity.choice;
+
+
 public class Location extends AppCompatActivity implements PlaceSelectionListener, OnConnectionFailedListener  {
 
     protected TextView mPlaceDetailsText;
@@ -87,16 +90,51 @@ public class Location extends AppCompatActivity implements PlaceSelectionListene
         // Retrieve the TextViews that will display details about the selected place.
         mPlaceDetailsText = (TextView) findViewById(R.id.place_details);
         mPlaceAttribution = (TextView) findViewById(R.id.place_attribution);
-        plan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent();
-                i.setClass(Location.this, Chosen_Places.class);
-                startActivity(i);
-
-
+        sharedpreferences = getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+        String chosen_class = sharedpreferences.getString(choice, "");
+        if(chosen_class=="Plan_Your_Day")
+        {
+            plan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent();
+                    i.setClass(Location.this, Plan_Your_Day.class);
+                    startActivity(i);
+                }
+            });
+        }
+        else if(chosen_class=="Top_Picks")
+            {
+                plan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent();
+                        i.setClass(Location.this,Top_Picks.class);
+                        startActivity(i);
             }
+
         });
+            }
+        else if(chosen_class=="Eating_Places")
+        {
+            plan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent();
+                    i.setClass(Location.this,Eating_Places.class);
+                    startActivity(i);
+                }
+
+            });
+        }
+
+
+
+
+
+
+
 
     }
     /**

@@ -24,7 +24,6 @@
             android:name=".Plan_Your_Day"
             android:label="@string/title_activity_plan__your__day"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Bookmarks" />
         <activity
             android:name=".Questionnaire"
             android:label="@string/title_activity_questionnaire"
