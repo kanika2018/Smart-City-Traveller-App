@@ -2,6 +2,7 @@ package com.example.kanika.smartcitytraveller;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -88,6 +89,17 @@ public class Chosen_Places extends ListActivity {
         resultArr = result.split(",");
 
         new Chosen_Places.fourquare().execute();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent();
+        i.setClass(Chosen_Places.this, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+
 
     }
 

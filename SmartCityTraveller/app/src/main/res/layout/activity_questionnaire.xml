@@ -22,7 +22,9 @@
         android:layout_marginStart="21dp"
         android:layout_marginTop="22dp"
         android:text="Here's a small questionnaire to personalize your plan"
-        android:textSize="18sp" />
+        android:textColor="#9400D3"
+        android:fontFamily="cursive"
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/button"
@@ -35,5 +37,6 @@
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
         android:layout_marginTop="39dp" />
+
 
 </RelativeLayout>

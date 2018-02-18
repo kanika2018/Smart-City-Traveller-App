@@ -25,7 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="Let us know about your preferred places"
-        android:textSize="18sp"
+        android:textColor="#9400D3"
+        android:textSize="25dp"
+        android:fontFamily="cursive"
+
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

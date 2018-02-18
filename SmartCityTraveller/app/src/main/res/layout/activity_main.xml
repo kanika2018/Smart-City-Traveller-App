@@ -5,13 +5,14 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    android:weightSum="1">
+    android:weightSum="7">
 
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="54dp"
+        android:layout_weight="1"
         android:fontFamily="cursive"
         android:text="Get Set Explore!"
         android:textAlignment="center"
@@ -23,18 +24,18 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_weight="2">
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="157dp"
-            android:layout_height="200dp"
+            android:layout_height="match_parent"
             android:src="@drawable/app" />
 
         <Button
             android:id="@+id/plan"
-            android:layout_width="196dp"
-            android:layout_height="180dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:background="#80cbc4"
             android:text="PLAN YOUR DAY"
@@ -47,46 +48,49 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_weight="2"
+        >
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="157dp"
-            android:layout_height="196dp"
+            android:layout_height="match_parent"
             android:src="@drawable/top_picks"
-            android:layout_weight="0.57" />
+            />
 
         <Button
             android:id="@+id/top"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:background="#80cbc4"
             android:text="Top Picks"
             android:textSize="20sp"
-            android:layout_weight="0.17" />
+            />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="157dp"
-            android:layout_height="196dp"
-            android:src="@drawable/food" />
+        android:orientation="horizontal"
+        android:layout_weight="2" >
 
-        <Button
-            android:id="@+id/eat"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_margin="10dp"
-            android:background="#80cbc4"
-            android:text="EAT YOUR HEART OUT"
-            android:textSize="20sp" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="157dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/food" />
+
+    <Button
+        android:id="@+id/eat"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="#80cbc4"
+        android:text="EAT YOUR HEART OUT"
+        android:textSize="20sp" />
+</LinearLayout>
 
 
 

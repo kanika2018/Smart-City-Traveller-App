@@ -36,8 +36,7 @@ public class MainActivity extends Activity  {
 
     Button top_picks, plan_your_day, bookmarks, eating_places, fetch_location;
     public static final String mypreference = "mypref";
-    SharedPreferences sharedpreferences;
-    public static final String choice = "ChoiceKey";
+
 
 
     @Override
@@ -49,13 +48,10 @@ public class MainActivity extends Activity  {
         top_picks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedpreferences=getSharedPreferences(mypreference,
-                        Context.MODE_PRIVATE);
 
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString(choice, "Top_Picks" );
                 Intent i = new Intent();
                 i.setClass(MainActivity.this, Location.class);
+                i.putExtra("Uniqid","From_Top_Picks");
                 startActivity(i);
             }
         });
@@ -66,15 +62,10 @@ public class MainActivity extends Activity  {
         plan_your_day.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedpreferences=getSharedPreferences(mypreference,
-                        Context.MODE_PRIVATE);
 
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString(choice, "Plan_Your_Day" );
-
-                editor.commit();
                 Intent i = new Intent();
                 i.setClass(MainActivity.this, Location.class);
+                i.putExtra("Uniqid","From_Plan_Your_Day");
                 startActivity(i);
             }
         });
@@ -83,13 +74,10 @@ public class MainActivity extends Activity  {
         eating_places.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedpreferences=getSharedPreferences(mypreference,
-                        Context.MODE_PRIVATE);
 
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString(choice, "Eating_places" );
                 Intent i = new Intent();
                 i.setClass(MainActivity.this, Location.class);
+                i.putExtra("Uniqid","From_Eating_Places");
                 startActivity(i);
             }
         });

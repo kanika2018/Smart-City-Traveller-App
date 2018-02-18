@@ -5,75 +5,100 @@
 android:layout_width="match_parent"
 android:layout_height="match_parent">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="15dp">
-
-    <TextView
-        android:text="@string/intro_message"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
-
-    <android.support.v7.widget.CardView
+    <LinearLayout
+        android:id="@+id/tv1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:gravity="center"
+        android:paddingTop="15dp">
 
-        <fragment
-            android:id="@+id/autocomplete_fragment"
-            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+
+        <TextView
             android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="Select Your Location"
+            android:textAlignment="center"
+            android:textColor="#9400D3"
+            android:textSize="40dp" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp">
+
+            <fragment
+                android:id="@+id/autocomplete_fragment"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="@string/selected_place" />
+
+        <TextView
+            android:id="@+id/place_details"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:autoLink="all" />
+
+        <TextView
+            android:id="@+id/place_attribution"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:paddingTop="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="OR"
+            android:textAlignment="center"
+            android:textColor="#9400D3"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#80CBC4"
+            android:gravity="center"
+            android:onClick="getPlace"
+            android:text="Get Current Place" />
+
+
+        <TextView
+            android:id="@+id/tvPlace"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-    </android.support.v7.widget.CardView>
 
-    <TextView
-        android:text="@string/selected_place"
+        <Button
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            android:id="@+id/plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <TextView
-        android:id="@+id/place_details"
-        android:autoLink="all"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/place_attribution"
-        android:autoLink="all"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="16dp" />
-
-    <Button
-        android:text="Get place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="getPlace"/>
-
-    <TextView
-        android:id="@+id/tvPlace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/plan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="getPlace"
-        android:text="Generate my plan" />
+            android:background="#F48FB1"
+            android:fontFamily="sans-serif"
+            android:onClick="getPlace"
+            android:text="Generate my plan" />
 
 
-</LinearLayout>
+    </LinearLayout>
 </ScrollView>

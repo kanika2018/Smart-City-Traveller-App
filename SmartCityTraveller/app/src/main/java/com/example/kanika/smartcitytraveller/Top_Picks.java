@@ -2,6 +2,7 @@ package com.example.kanika.smartcitytraveller;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -40,6 +41,17 @@ public class Top_Picks extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top__picks);
         new fourquare().execute();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent();
+        i.setClass(Top_Picks.this, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+
+
     }
     private class fourquare extends AsyncTask<View, Void, String> {
 

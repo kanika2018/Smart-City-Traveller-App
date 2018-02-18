@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.kanika.smartcitytraveller.Eating_Places"
     android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="Bon Apetite!"
+        android:textAlignment="center"
+        android:textColor="#9400D3"
+        android:textSize="40dp" />
     <ListView
     android:id="@android:id/list"
     android:layout_width="match_parent"
